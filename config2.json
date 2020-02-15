@@ -1,0 +1,44 @@
+{
+  "maankaytto": {
+    "geometrytype": "polygon",
+    "fields": [
+      "Autoliikennealue",
+      "Hautausmaa",
+      "Hietikko",
+      "Kaatopaikka",
+      "Kansallispuisto",
+      "Lentokenttaalue",
+      "Luonnonsuojelualue",
+      "Maatalousmaa",
+      "MuuAvoinAlue",
+      "Niitty",
+      "Puisto",
+      "Suo",
+      "TaajaanRakennettuAlue",
+      "TulvaAlue",
+      "UrheiluJaVirkistysalue",
+      "Varastoalue"
+    ]
+  },
+  "vesialue": {
+    "geometrytype": "polygon",
+    "fields": [
+      "VirtavesiAlue",
+      "Jarvi",
+      "Meri",
+      "Allas"
+    ]
+  },
+  "rautatie": {
+    "geometrytype": "line",
+    "fields": [
+      "Rautatie"
+    ]
+  },
+  "paikannimi": {
+    "geometrytype": "point",
+    "fields": [
+      "Paikannnimi"
+    ]
+  }
+}
