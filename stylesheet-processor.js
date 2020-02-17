@@ -27,6 +27,13 @@ async function main() {
     target.layers.splice(pintaStartingIndex, 0, tunneli);
     pintaStartingIndex += 1;
   }
+  pintaStartingIndex = ogpsi;
+  for (i in pintaLayers) {
+    let tunneli = modifyLayer(cloneJson(pintaLayers[i]), -3);
+    target.layers.splice(pintaStartingIndex, 0, tunneli);
+    pintaStartingIndex += 1;
+  }
+
   let pintaEndingIndex = pintaStartingIndex;
   for (let i = pintaEndingIndex; i < target.layers.length; i++) {
     if (target.layers[i].id.indexOf("pinta") == -1 && target.layers[i].id.indexOf("tunneli") == -1 && target.layers[i].id.indexOf("alikulku") == -1) {
@@ -42,6 +49,11 @@ async function main() {
   }
   for (i in pintaLayers) {
     let silta= modifyLayer(cloneJson(pintaLayers[i]), 2);
+    target.layers.splice(pintaEndingIndex, 0, silta);
+    pintaEndingIndex += 1;
+  }
+  for (i in pintaLayers) {
+    let silta= modifyLayer(cloneJson(pintaLayers[i]), 3);
     target.layers.splice(pintaEndingIndex, 0, silta);
     pintaEndingIndex += 1;
   }
@@ -74,11 +86,17 @@ function modifyLayer(target, level) {
     case -2:
       replacement = "tunneli";
       break;
+    case -3:
+      replacement = "tunneli2";
+      break;
     case 1:
       replacement = "ylikulku";
       break;
     case 2:
       replacement = "silta";
+      break;
+    case 3:
+      replacement = "silta2";
       break;
   }
   target = modifyLayerName(target, replacement);
@@ -96,8 +114,12 @@ function modifyFilter(target, level) {
           currentFilter[2] = -1;
           break;
         case -2:
+          currentFilter[0] = "==";
+          currentFilter[2] = -2;
+          break;
+        case -3:
           currentFilter[0] = "<";
-          currentFilter[2] = -1;
+          currentFilter[2] = -2;
           break;
         case 1:
           currentFilter[2] = 1;
@@ -105,6 +127,10 @@ function modifyFilter(target, level) {
         case 2:
           currentFilter[0] = ">";
           currentFilter[2] = 1;
+          break;
+        case 3:
+          currentFilter[0] = ">";
+          currentFilter[2] = 2;
           break;
       }
     }

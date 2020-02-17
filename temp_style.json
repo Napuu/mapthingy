@@ -1,0 +1,281 @@
+{
+  "version": 8,
+  "name": "Empty Style",
+  "metadata": {"maputnik:renderer": "mbgljs"},
+  "sources": {
+    "vesialue": {
+      "type": "vector",
+      "tiles": ["http://172.22.243.113:8080/data/vesialue/{z}/{x}/{y}.pbf"],
+      "minZoom": 0,
+      "maxZoom": 14,
+      "maxzoom": 14
+    },
+    "maankaytto": {
+      "type": "vector",
+      "tiles": ["http://172.22.243.113:8080/data/maankaytto/{z}/{x}/{y}.pbf"],
+      "minZoom": 0,
+      "maxZoom": 14,
+      "maxzoom": 14
+    },
+    "paikannimi": {
+      "type": "vector",
+      "tiles": ["http://172.22.243.113:8080/data/paikannimi/{z}/{x}/{y}.pbf"],
+      "minZoom": 0,
+      "maxZoom": 14,
+      "maxzoom": 12
+    },
+    "kayra": {
+      "type": "vector",
+      "tiles": ["http://172.22.243.113:8080/data/kayra/{z}/{x}/{y}.pbf"],
+      "minZoom": 0,
+      "maxZoom": 14,
+      "maxzoom": 14
+    },
+    "rautatie": {
+      "type": "vector",
+      "tiles": ["http://172.22.243.113:8080/data/rautatie/{z}/{x}/{y}.pbf"],
+      "minZoom": 0,
+      "maxZoom": 14,
+      "maxzoom": 14
+    },
+    "digiroad": {
+      "type": "vector",
+      "tiles": ["http://172.22.243.113:8080/data/digiroad/{z}/{x}/{y}.pbf"],
+      "minZoom": 0,
+      "maxZoom": 14,
+      "maxzoom": 14
+    },
+    "rakennus": {
+      "type": "vector",
+      "tiles": ["http://172.22.243.113:8080/data/rakennus/{z}/{x}/{y}.pbf"],
+      "minZoom": 0,
+      "maxZoom": 14,
+      "maxzoom": 14
+    }
+  },
+  "sprite": "",
+  "glyphs": "https://orangemug.github.io/font-glyphs/glyphs/{fontstack}/{range}.pbf",
+  "layers": [
+    {
+      "id": "tausta",
+      "type": "background",
+      "paint": {"background-color": "rgba(187, 226, 182, 1)"}
+    },
+    {
+      "id": "vesialue",
+      "type": "fill",
+      "source": "vesialue",
+      "source-layer": "vesialue",
+      "paint": {"fill-color": "rgba(46, 182, 255, 1)"}
+    },
+    {
+      "id": "maankaytto-taajama",
+      "type": "fill",
+      "source": "maankaytto",
+      "source-layer": "maankaytto",
+      "filter": ["all", ["==", "kohdeluokka", 40200]],
+      "layout": {"visibility": "visible"},
+      "paint": {"fill-color": "rgba(173, 194, 174, 1)"}
+    },
+    {
+      "id": "maankaytto-luonnonpuisto",
+      "type": "fill",
+      "source": "maankaytto",
+      "source-layer": "maankaytto",
+      "filter": ["all", ["==", "kohdeluokka", 72200]],
+      "layout": {"visibility": "visible"},
+      "paint": {"fill-color": "rgba(150, 196, 152, 1)"}
+    },
+    {
+      "id": "maankaytto-puisto",
+      "type": "fill",
+      "source": "maankaytto",
+      "source-layer": "maankaytto",
+      "filter": ["all", ["==", "kohdeluokka", 32900]],
+      "paint": {"fill-color": "rgba(168, 213, 142, 1)"}
+    },
+    {
+      "id": "pinta-pääkatu-reuna",
+      "type": "line",
+      "source": "digiroad",
+      "source-layer": "DR_LINKKI",
+      "filter": ["all", ["in", "TOIMINN_LK", 4, 5], ["==", "SILTA_ALIK", 0]],
+      "layout": {"line-join": "round", "line-cap": "butt"},
+      "paint": {
+        "line-color": "rgba(0, 0, 0, 1)",
+        "line-width": {"stops": [[14, 3.5], [16, 10.5]]}
+      }
+    },
+    {
+      "id": "pinta-päätie-reuna",
+      "type": "line",
+      "source": "digiroad",
+      "source-layer": "DR_LINKKI",
+      "minzoom": 13,
+      "filter": ["all", ["in", "TOIMINN_LK", 2, 3], ["==", "SILTA_ALIK", 0]],
+      "layout": {
+        "visibility": "visible",
+        "line-join": "miter",
+        "line-cap": "butt",
+        "line-miter-limit": 2,
+        "line-round-limit": 2
+      },
+      "paint": {
+        "line-color": "rgba(0, 0, 0, 1)",
+        "line-opacity": 1,
+        "line-dasharray": [1],
+        "line-width": {"stops": [[14, 6], [16, 13]]}
+      }
+    },
+    {
+      "id": "pinta-valtatie-reuna",
+      "type": "line",
+      "source": "digiroad",
+      "source-layer": "DR_LINKKI",
+      "minzoom": 0,
+      "filter": ["all", ["in", "TOIMINN_LK", 1], ["==", "SILTA_ALIK", 0]],
+      "layout": {
+        "visibility": "visible",
+        "line-join": "miter",
+        "line-cap": "butt",
+        "line-miter-limit": 2,
+        "line-round-limit": 2
+      },
+      "paint": {
+        "line-color": "rgba(0, 0, 0, 1)",
+        "line-opacity": 1,
+        "line-dasharray": [1],
+        "line-width": {"stops": [[14, 6], [16, 13]]}
+      }
+    },
+    {
+      "id": "pinta-pääkatu",
+      "type": "line",
+      "source": "digiroad",
+      "source-layer": "DR_LINKKI",
+      "minzoom": 0,
+      "filter": ["all", ["in", "TOIMINN_LK", 4, 5], ["==", "SILTA_ALIK", 0]],
+      "layout": {
+        "visibility": "visible",
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-color": "rgba(255, 255, 255, 1)",
+        "line-opacity": 1,
+        "line-dasharray": [1],
+        "line-width": {"stops": [[14, 3], [16, 10]]}
+      }
+    },
+    {
+      "id": "pinta-päätie",
+      "type": "line",
+      "source": "digiroad",
+      "source-layer": "DR_LINKKI",
+      "minzoom": 13,
+      "filter": ["all", ["in", "TOIMINN_LK", 2, 3], ["==", "SILTA_ALIK", 0]],
+      "layout": {
+        "visibility": "visible",
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-color": "rgba(216, 204, 143, 1)",
+        "line-opacity": 1,
+        "line-dasharray": [1],
+        "line-width": {"stops": [[14, 5], [16, 12]]}
+      }
+    },
+    {
+      "id": "pinta-valtatie",
+      "type": "line",
+      "source": "digiroad",
+      "source-layer": "DR_LINKKI",
+      "minzoom": 0,
+      "filter": ["all", ["==", "TOIMINN_LK", 1], ["==", "SILTA_ALIK", 0]],
+      "layout": {
+        "visibility": "visible",
+        "line-cap": "round",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-color": "rgba(189, 157, 83, 1)",
+        "line-opacity": 1,
+        "line-dasharray": [1],
+        "line-width": {"stops": [[14, 5], [16, 12]]}
+      }
+    },
+    {
+      "id": "pinta-kevytliikenne",
+      "type": "line",
+      "source": "digiroad",
+      "source-layer": "DR_LINKKI",
+      "minzoom": 13,
+      "filter": ["all", ["in", "TOIMINN_LK", 8, 9], ["==", "SILTA_ALIK", 0]],
+      "layout": {"visibility": "visible"},
+      "paint": {
+        "line-color": "rgba(255, 255, 255, 1)",
+        "line-opacity": {"stops": [[13, 0], [14, 1]]},
+        "line-dasharray": [2, 1],
+        "line-width": {"stops": [[15, 1.8], [16, 2.5]]}
+      }
+    },
+    {
+      "id": "pinta-rautatie",
+      "type": "line",
+      "source": "rautatie",
+      "source-layer": "rautatie",
+      "filter": ["all", ["==", "tasosijainti", 0]],
+      "paint": {
+        "line-color": "rgba(167, 167, 167, 1)",
+        "line-width": {"stops": [[10, 1], [15, 2]]}
+      }
+    },
+    {
+      "id": "rakennus-asuin",
+      "type": "fill",
+      "source": "rakennus",
+      "source-layer": "rakennus",
+      "minzoom": 12,
+      "filter": ["all", ["==", "kayttotarkoitus", 1]],
+      "layout": {"visibility": "visible"},
+      "paint": {"fill-color": "rgba(122, 102, 102, 1)"}
+    },
+    {
+      "id": "rakennus-julkinen",
+      "type": "fill",
+      "source": "rakennus",
+      "source-layer": "rakennus",
+      "minzoom": 12,
+      "filter": ["all", ["==", "kayttotarkoitus", 2]],
+      "layout": {},
+      "paint": {"fill-color": "rgba(122, 122, 122, 1)"}
+    },
+    {
+      "id": "paikannimi",
+      "type": "symbol",
+      "source": "paikannimi",
+      "source-layer": "paikannimi"
+    },
+    {
+      "id": "nimi-pääkatu",
+      "type": "symbol",
+      "source": "digiroad",
+      "source-layer": "DR_LINKKI",
+      "minzoom": 0,
+      "filter": ["all", ["in", "TOIMINN_LK", 2, 3, 4, 5]],
+      "layout": {
+        "visibility": "visible",
+        "text-field": "{TIENIMI_SU}",
+        "text-font": ["Open Sans Regular"],
+        "symbol-placement": "line",
+        "text-size": {"stops": [[14, 8], [16, 16]]}
+      },
+      "paint": {
+        "text-halo-width": 1,
+        "text-halo-color": "rgba(255, 255, 255, 1)"
+      }
+    }
+  ],
+  "id": "zufqfdnuz"
+}
