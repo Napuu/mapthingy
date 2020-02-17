@@ -1,0 +1,17 @@
+{
+  "name": "stylesheet-processing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "stylesheet-processor.js",
+  "scripts": {
+    "test": "node ./node_modules/semistandard/bin/cmd.js && node tests.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "rewire": "^4.0.1",
+    "semistandard": "^14.2.0",
+    "zora": "^3.1.8"
+  }
+}
