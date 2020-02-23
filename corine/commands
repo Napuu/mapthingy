@@ -1,0 +1,4 @@
+gdalwarp -co COMPRESS=LZW -t_srs EPSG:4326 CLC2018_CLC2018_V2018_20.tif clc_translated.tif
+gdal_translate -projwin 19.5 71 32 59 -of GTiff clc_translated.tif clip.tif
+gdal_polygonize.py clip.tif -f GeoJSON clc_clip_polygon.geojson
+tippecanoe -z10 -ab -o landuse.mbtiles --coalesce-densest-as-needed --drop-smallest-as-needed --extend-zooms-if-still-dropping clc_clip_polygon.geojson --no-feature-limit --no-tile-size-limit --force

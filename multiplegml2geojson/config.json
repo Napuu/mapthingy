@@ -20,6 +20,20 @@
       "Varastoalue"
     ]
   },
+  "reunaviiva": {
+    "geometrytype": "linestring",
+    "fields": [
+      "MaastokuvionReuna",
+      "Maasto2kuvionReuna"
+    ]
+  },
+  "kayra": {
+    "geometrytype": "linestring",
+    "fields": [
+      "Korkeuskayra",
+      "Syvyyskayra"
+    ]
+  },
   "vesialue": {
     "geometrytype": "polygon",
     "fields": [

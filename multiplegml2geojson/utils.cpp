@@ -4,6 +4,7 @@
 #include <boost/range/iterator_range.hpp>
 
 namespace utils {
+
 void printLayers(GDALDataset* poDS) {
   for(auto layer: poDS->GetLayers()) {
     std::cout << layer->GetName() << std::endl;
@@ -37,4 +38,4 @@ bool checkLayerExists(GDALDataset* poDS, std::string srcLayer)
   return false;
 }
 
-};
+}

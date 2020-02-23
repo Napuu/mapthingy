@@ -2,6 +2,7 @@
 #include <boost/property_tree/json_parser.hpp>
 
 namespace argumentparser {
+
 ConfigurationParser::ConfigurationParser() {};
 void ConfigurationParser::parseArguments(int ac, char *av[]) {
   try {
@@ -10,7 +11,7 @@ void ConfigurationParser::parseArguments(int ac, char *av[]) {
       ("help,h", "print available arguments")
       ("config,c", boost::program_options::value<std::string>()->default_value("config.json"), "json configuration file")
       ("input-directory,f", boost::program_options::value<std::string>(), "location of input xml files")
-      ("input-tile-prefix,p", boost::program_options::value<std::string>()->default_value("*"), "prefix of tiles included (M4441* to select M4441L.xml, M44441R.xml etc.")
+      ("input-tile-prefix,p", boost::program_options::value<std::string>(), "prefix of tiles included (M4441 to select M4441L.xml, M44441R.xml etc.")
       ("workers,j", boost::program_options::value<int>()->default_value(5), "amount of concurrent jobs")
       ("output-name,o", boost::program_options::value<std::string>(), "name of outputfile");
 
@@ -26,6 +27,10 @@ void ConfigurationParser::parseArguments(int ac, char *av[]) {
     bool err = false;
     if (vm.count("input-directory") == 0) {
       cerr << "no input directory provided\n";
+      err = true;
+    }
+    if (vm.count("input-tile-prefix") == 0) {
+      cerr << "no input tile prefix provided\n";
       err = true;
     }
     if (vm.count("output-name") == 0) {
