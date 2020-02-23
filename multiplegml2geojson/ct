@@ -1,1 +1,0 @@
-g++ -o main main.cpp utils.h -I/m/home/home5/52/kaarias3/unix/.conda/envs/geo/include -L/m/home/home5/52/kaarias3/unix/.conda/envs/geo/lib -lboost_system -lboost_filesystem -std=c++0x -pthread -lgdal -lboost_thread

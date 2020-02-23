@@ -30,7 +30,7 @@
     ]
   },
   "rautatie": {
-    "geometrytype": "line",
+    "geometrytype": "linestring",
     "fields": [
       "Rautatie"
     ]
@@ -38,7 +38,7 @@
   "paikannimi": {
     "geometrytype": "point",
     "fields": [
-      "Paikannnimi"
+      "Paikannimi"
     ]
   }
 }
