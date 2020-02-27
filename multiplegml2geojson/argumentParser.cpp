@@ -13,7 +13,8 @@ void ConfigurationParser::parseArguments(int ac, char *av[]) {
       ("input-directory,f", boost::program_options::value<std::string>(), "location of input xml files")
       ("input-tile-prefix,p", boost::program_options::value<std::string>(), "prefix of tiles included (M4441 to select M4441L.xml, M44441R.xml etc.")
       ("workers,j", boost::program_options::value<int>()->default_value(5), "amount of concurrent jobs")
-      ("output-name,o", boost::program_options::value<std::string>(), "name of outputfile");
+      ("output-name,o", boost::program_options::value<std::string>(), "name of outputfile")
+      ("output-directory,d", boost::program_options::value<std::string>()->default_value("./"), "output directory");
 
     boost::program_options::variables_map vm;
     boost::program_options::store(boost::program_options::parse_command_line(ac, av, desc), vm);
@@ -43,6 +44,7 @@ void ConfigurationParser::parseArguments(int ac, char *av[]) {
     this->inputTilePrefix = vm["input-tile-prefix"].as<std::string>();
     this->jsonLocation = vm["config"].as<std::string>();
     this->outputFilename = vm["output-name"].as<std::string>();
+    this->outputDirectory= vm["output-directory"].as<std::string>();
     this->nWorkers = vm["workers"].as<int>();
   }
   catch(exception& e) {

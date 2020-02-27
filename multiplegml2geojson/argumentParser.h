@@ -21,6 +21,7 @@ struct ConfigurationParser {
     boost::property_tree::ptree tree;
     std::string jsonLocation;
     std::string outputFilename;
+    std::string outputDirectory;
     std::string inputDirectory;
     std::string inputTilePrefix;
     int nWorkers;

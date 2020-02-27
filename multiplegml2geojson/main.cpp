@@ -20,6 +20,7 @@ int main(int argc, char *argv[]) {
   boost::property_tree::json_parser::read_json("config.json", tree);
   std::vector<boost::thread> threads;
   boost::thread_group g;
+  GDALAllRegister();
   for (auto layer: tree) {
     std::string targetlayer = layer.first;
     std::vector<std::string> fields;
@@ -29,7 +30,8 @@ int main(int argc, char *argv[]) {
       fields.push_back(fieldname.second.data());
     }
     
-    struct tileprocessor::TileProcessingParameters params = {config.outputFilename, fields, targetlayer, geometryType, config.inputDirectory, config.inputTilePrefix};
+    struct tileprocessor::TileProcessingParameters params = {config.outputDirectory, config.outputFilename, fields, targetlayer, geometryType, config.inputDirectory, config.inputTilePrefix};
+    //tileprocessor::processTile(params);
     g.create_thread(boost::bind(tileprocessor::processTile, params));
     //g.add_thread(&boost::create_thread(processTile, "M4", fields, targetlayer, geometryType));
     //processTile("M4", fields, targetlayer, geometryType);

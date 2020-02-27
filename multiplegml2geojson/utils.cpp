@@ -16,7 +16,7 @@ std::vector<std::string> printFiles(std::string directory, std::string prefix) {
   std::vector<std::string> validFiles;
   if (is_directory(p)) {
     for (auto& entry : boost::make_iterator_range(boost::filesystem::directory_iterator(p), {})) {
-      if (entry.path().string().find(".xml") != std::string::npos) {
+      if (entry.path().string().find(".zip") != std::string::npos) {
         if (entry.path().string().find(prefix) == std::string::npos) continue;
         validFiles.push_back(entry.path().string());
       }

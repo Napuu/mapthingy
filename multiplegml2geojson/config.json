@@ -20,11 +20,18 @@
       "Varastoalue"
     ]
   },
+  "rakennus": {
+    "geometrytype": "polygon",
+    "fields": [
+      "Rakennus"
+    ]
+  },
   "reunaviiva": {
     "geometrytype": "linestring",
     "fields": [
       "MaastokuvionReuna",
-      "Maasto2kuvionReuna"
+      "Maasto2kuvionReuna",
+      "SuojelualueenReunaviiva"
     ]
   },
   "kayra": {
@@ -41,6 +48,12 @@
       "Jarvi",
       "Meri",
       "Allas"
+    ]
+  },
+  "tieviiva": {
+    "geometrytype": "linestring",
+    "fields": [
+      "Tieviiva"
     ]
   },
   "rautatie": {

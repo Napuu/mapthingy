@@ -31,10 +31,11 @@ void FeatureExtractor::CreateDstDS(std::string dstDSName) {
 }
 
 void FeatureExtractor::AcquireSrcDS(std::string srcDSName) {
-  srcDS = (GDALDataset*) GDALOpenEx(srcDSName.c_str(), GDAL_OF_VECTOR, NULL, NULL, NULL );
-  if( srcDS == NULL )
+  std::string path = "/vsizip/" + srcDSName;
+  this->srcDS = (GDALDataset*) GDALOpenEx(path.c_str(), GDAL_OF_VECTOR, NULL, NULL, NULL );
+  if( this->srcDS == NULL )
   {
-    printf("Open failed.\n");
+    printf("Opening %s failed.\n", path.c_str());
     exit(1);
   }
 }
@@ -48,7 +49,7 @@ void FeatureExtractor::CreateDstLayer(std::string dstLayerName, std::string dstL
   } else if (dstLayerType == "point") {
     geomType = wkbPoint;
   }
-  dstLayer = dstDS->CreateLayer(dstLayerName.c_str(), &dstSRS, wkbPolygon, NULL );
+  this->dstLayer = dstDS->CreateLayer(dstLayerName.c_str(), &dstSRS, wkbPolygon, NULL );
 }
 
 void FeatureExtractor::LayerFromDst2Src(std::string srcLayerName) {
