@@ -21,6 +21,7 @@ class FeatureExtractor {
   void CreateDstLayer(std::string, std::string);
   void InitializeSRS();
   void CloseDstDS();
+  void CloseSrcDS();
 };
 
 }

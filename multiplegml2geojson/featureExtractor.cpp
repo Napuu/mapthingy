@@ -6,13 +6,17 @@ FeatureExtractor::FeatureExtractor () {
 }
 
 void FeatureExtractor::CloseDstDS() {
-  GDALClose(dstDS);
+  GDALClose(this->dstDS);
+}
+
+void FeatureExtractor::CloseSrcDS() {
+  GDALClose(this->srcDS);
 }
 
 void FeatureExtractor::InitializeSRS () {
   srcSRS.importFromEPSG(3067);
   dstSRS.importFromEPSG(4326);
-  poCT = OGRCreateCoordinateTransformation(&srcSRS, &dstSRS);
+  poCT = OGRCreateCoordinateTransformation(&this->srcSRS, &this->dstSRS);
 }
 
 GDALDriver* FeatureExtractor::GetDstDriver() {
@@ -69,7 +73,7 @@ void FeatureExtractor::LayerFromDst2Src(std::string srcLayerName) {
       printf("error creating feature");
       exit(1);
     }
+    OGRFeature::DestroyFeature(poFeature);
   }
-
 }
 }

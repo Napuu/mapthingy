@@ -16,6 +16,7 @@ void processTile(TileProcessingParameters params) {
     for (auto & field: params.fields) {
       extractor->LayerFromDst2Src(field);
     }
+    extractor->CloseSrcDS();
   }
   extractor->CloseDstDS();
 }
