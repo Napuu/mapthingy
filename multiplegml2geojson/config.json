@@ -31,7 +31,8 @@
     "fields": [
       "MaastokuvionReuna",
       "Maasto2kuvionReuna",
-      "SuojelualueenReunaviiva"
+      "SuojelualueenReunaviiva",
+      "Rakennelma"
     ]
   },
   "kayra": {
