@@ -1,0 +1,47 @@
+{
+  "styles": {
+    "basic": {
+      "style": "style.json",
+      "serve_data": "false",
+      "serve_rendered": true
+    }
+  },
+  "data": {
+    "digiroad": {
+      "mbtiles": "dr.mbtiles"
+    },
+    "maankaytto_tarkka": {
+      "mbtiles": "maankaytto.mbtiles"
+    },
+    "maankaytto_karkea": {
+      "mbtiles": "corine.mbtiles"
+    },
+    "vesialue": {
+      "mbtiles": "vesialue.mbtiles"
+    },
+    "rautatie": {
+      "mbtiles": "rautatie.mbtiles"
+    },
+    "paikannimi": {
+      "mbtiles": "paikannimi.mbtiles"
+    },
+    "kunnannimi": {
+      "mbtiles": "kunnannimi.mbtiles"
+    },
+    "rakennus": {
+      "mbtiles": "rakennus.mbtiles"
+    },
+    "rautatie": {
+      "mbtiles": "rautatie.mbtiles"
+    },
+    "reunaviiva": {
+      "mbtiles": "reunaviiva.mbtiles"
+    },
+    "polku": {
+      "mbtiles": "polku.mbtiles"
+    },
+    "isotie": {
+      "mbtiles": "polku.mbtiles"
+    }
+  }
+}
